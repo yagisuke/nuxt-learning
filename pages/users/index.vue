@@ -1,16 +1,21 @@
 <template>
-  <section class="container">
-    users page!!
+  <section>
+    <input type="text" v-model="userId">
+    <button @click="onLoadUser">Load User</button>
   </section>
 </template>
 
-<style>
-.container
-{
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+<script>
+export default {
+  data() {
+    return {
+      userId: ''
+    }
+  },
+  methods: {
+    onLoadUser() {
+      this.$router.push('/users/' + this.userId)
+    }
+  }
 }
-</style>
+</script>
