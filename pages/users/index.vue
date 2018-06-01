@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <div>
     Please enter an id and click the button.
-  </section>
+  </div>
 </template>
