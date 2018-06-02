@@ -4,64 +4,51 @@
       <h1>Get the latest tech news!</h1>
     </section>
     <section class="featured-posts">
-      <nuxt-link :to="'/posts/' + 1">
-        <article class="post-preview">
-          <div class="post-thumbnail" style="background-image: url('https://img13.shop-pro.jp/PA01071/419/etc/MK5263054747-150%A5%A4%A5%E1%A1%BC%A5%B8.jpg');"></div>
-          <h1>post title1</h1>
-          <p>preview text1</p>
-        </article>
-      </nuxt-link>
-      <nuxt-link :to="'/posts/' + 2">
-        <article class="post-preview">
-          <div class="post-thumbnail" style="background-image: url('https://img13.shop-pro.jp/PA01071/419/etc/MK5263054747-150%A5%A4%A5%E1%A1%BC%A5%B8.jpg');"></div>
-          <h1>post title2</h1>
-          <p>preview text2</p>
-        </article>
-      </nuxt-link>
-      <nuxt-link :to="'/posts/' + 3">
-        <article class="post-preview">
-          <div class="post-thumbnail" style="background-image: url('https://img13.shop-pro.jp/PA01071/419/etc/MK5263054747-150%A5%A4%A5%E1%A1%BC%A5%B8.jpg');"></div>
-          <h1>post title3</h1>
-          <p>preview text3</p>
-        </article>
-      </nuxt-link>
-      <nuxt-link :to="'/posts/' + 4">
-        <article class="post-preview">
-          <div class="post-thumbnail" style="background-image: url('https://img13.shop-pro.jp/PA01071/419/etc/MK5263054747-150%A5%A4%A5%E1%A1%BC%A5%B8.jpg');"></div>
-          <h1>post title4</h1>
-          <p>preview text4</p>
-        </article>
-      </nuxt-link>
+      <PostPreview />
+      <PostPreview />
+      <PostPreview />
+      <PostPreview />
     </section>
   </div>
 </template>
 
+<script>
+import PostPreview from '@/components/Posts/PostPreview'
+export default {
+  components: {
+    PostPreview
+  }
+}
+</script>
+
+
 <style scoped>
-a {
-  text-decoration: none;
+.intro h1 {
+  width: 80%;
+  margin: 30px auto;
+  padding: 10px;
+  background-color: rgb(211, 211, 211);
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px black;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 1.5rem;
   color: black;
 }
 
-.post-preview {
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 2px #ccc;
-  width: 90%;
-  margin: 10px auto;
-  text-align: center;
-}
-
-@media (min-width: 850px) {
-  .post-preview {
-    display: inline-block;
-    width: 400px;
-    margin: 10px;
+@media (min-width: 768px) {
+  .intro h1 {
+    font-size: 2rem;
   }
 }
 
-.post-thumbnail {
-  width: 100%;
-  height: 200px;
-  background-position: center;
-  background-size: cover;
+.featured-posts {
+  display: flex;
+  padding: 20px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 </style>
