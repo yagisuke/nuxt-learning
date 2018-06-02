@@ -4,10 +4,12 @@
       <h1>Get the latest tech news!</h1>
     </section>
     <section class="featured-posts">
-      <PostPreview />
-      <PostPreview />
-      <PostPreview />
-      <PostPreview />
+      <PostPreview
+        id="1"
+        thumbnail="http://marimek-prod.item.photo/product/52_1_5263009231/52_1_5263009231_main.jpg"
+        title="title 1"
+        previewText="preview text 1"
+        />
     </section>
   </div>
 </template>
