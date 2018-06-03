@@ -25,8 +25,20 @@ export default {
 
 
 <style scoped>
+.intro {
+  position: relative;
+  height: 250px;
+  padding: 30px;
+  box-sizing: border-box;
+  background-size: cover;
+  background-image: url('~assets/images/main_page_cover.jpg');
+}
+
 .intro h1 {
-  width: 80%;
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  width: 90%;
   margin: 30px auto;
   padding: 10px;
   background-color: rgb(211, 211, 211);
@@ -47,10 +59,11 @@ export default {
 
 .featured-posts {
   display: flex;
-  padding: 20px;
-  box-sizing: border-box;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  padding: 20px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 </style>
