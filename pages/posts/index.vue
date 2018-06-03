@@ -1,19 +1,36 @@
 <template>
   <div class="posts-page">
-    <h1>posts page!</h1>
-    <p>text text text text text text text</p>
-    <p>text text text text text text text</p>
-    <p>text text text text text text text</p>
-    <p>text text text text text text text</p>
-    <p>text text text text text text text</p>
-  </div>  
+    <section class="post-list">
+      <PostPreview
+        id="1"
+        thumbnail="http://marimek-prod.item.photo/product/52_1_5263009231/52_1_5263009231_main.jpg"
+        title="title 1"
+        previewText="preview text 1"
+       />
+    </section>
+  </div>
 </template>
 
+<script>
+import PostPreview from '@/components/Posts/PostPreview'
+
+export default {
+  components: {
+    PostPreview
+  }
+}
+</script>
+
+
 <style scoped>
-.posts-page {
+.post-list {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 </style>
 

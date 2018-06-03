@@ -9,13 +9,14 @@
         thumbnail="http://marimek-prod.item.photo/product/52_1_5263009231/52_1_5263009231_main.jpg"
         title="title 1"
         previewText="preview text 1"
-        />
+      />
     </section>
   </div>
 </template>
 
 <script>
 import PostPreview from '@/components/Posts/PostPreview'
+
 export default {
   components: {
     PostPreview
