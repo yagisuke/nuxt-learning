@@ -13,6 +13,7 @@ export default {
   components: {
     AminPostForm
   },
+  layout: 'admin',
   data() {
     return {
       loadedPost: {
