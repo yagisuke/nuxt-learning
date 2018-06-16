@@ -7,6 +7,7 @@
         <div class="post-detail">Written by {{ loadedPost.author }}</div>
       </div>
       <p>{{ loadedPost.content }}</p>
+      <p>{{ loadedPost.previewText }}</p>
     </section>
     <section class="post-feedback">
       <p>Let me know what you think about the post, send a mail to

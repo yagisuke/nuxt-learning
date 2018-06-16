@@ -20,7 +20,9 @@ export default {
         author: 'yagisuke',
         title: 'title1',
         content: 'content1',
-        thumbnailLink: 'http://marimek-prod.item.photo/product/52_1_5263009231/52_1_5263009231_main.jpg'
+        thumbnail: 'http://marimek-prod.item.photo/product/52_1_5263009231/52_1_5263009231_main.jpg',
+        previewText: 'hello',
+        updatedDate: new Date()
       }
     }
   }

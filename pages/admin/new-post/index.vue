@@ -17,7 +17,11 @@ export default {
   layout: 'admin',
   methods: {
     onSubmitted(postData) {
-      axios.post('https://nuxt-learning.firebaseio.com/posts.json', postData)
+      const data = {
+        ...postData,
+        updatedDate: new Date()
+      }
+      axios.post('https://nuxt-learning.firebaseio.com/posts.json', data)
         .then(result => console.log(result))
         .catch(e => console.log(e))
     }

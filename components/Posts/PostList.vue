@@ -5,9 +5,10 @@
       :key="post.id"
       :id="post.id"
       :is-admin="isAdmin"
-      :thumbnailLink="post.thumbnailLink"
+      :thumbnail="post.thumbnail"
       :title="post.title"
       :content="post.content"
+      :previewText="post.previewText"
       />
   </section>
 </template>
