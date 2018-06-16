@@ -1,17 +1,17 @@
 <template>
   <div class="admin-post-page">
     <section class="update-form">
-      <AminPostForm :post="loadedPost" />
+      <AdminPostForm :post="loadedPost" />
     </section>
   </div>  
 </template>
 
 <script>
-import AminPostForm from '@/components/Admin/AdminPostForm'
+import AdminPostForm from '@/components/Admin/AdminPostForm'
 
 export default {
   components: {
-    AminPostForm
+    AdminPostForm
   },
   layout: 'admin',
   data() {
