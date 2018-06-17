@@ -18,7 +18,7 @@ export default {
   asyncData(context) {
     const postId = context.params.postId
 
-    return axios.get(`https://nuxt-learning-blog.firebaseio.com/posts/${postId}.json`)
+    return axios.get(`${process.env.API_URL}/posts/${postId}.json`)
       .then(res => {
         return {
           loadedPost: {

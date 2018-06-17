@@ -1,7 +1,7 @@
 {
-  "name": "nuxt-learning",
+  "name": "nuxt-learning-blog",
   "version": "1.0.0",
-  "description": "My brilliant Nuxt.js project",
+  "description": "This is nuxt learning blog",
   "author": "yagisuke",
   "private": true,
   "scripts": {

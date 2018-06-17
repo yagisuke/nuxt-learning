@@ -61,5 +61,8 @@ module.exports = {
         })
       }
     }
+  },
+  env: {
+    API_URL: 'https://nuxt-learning-blog.firebaseio.com'
   }
 }
