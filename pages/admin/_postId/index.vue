@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import AdminPostForm from '@/components/Admin/AdminPostForm'
 
 export default {
@@ -14,17 +15,14 @@ export default {
     AdminPostForm
   },
   layout: 'admin',
-  data() {
-    return {
-      loadedPost: {
-        author: 'yagisuke',
-        title: 'title1',
-        content: 'content1',
-        thumbnail: 'http://marimek-prod.item.photo/product/52_1_5263009231/52_1_5263009231_main.jpg',
-        previewText: 'hello',
-        updatedDate: new Date()
-      }
-    }
+  asyncData(context) {
+    return axios.get('https://nuxt-learning.firebaseio.com/posts/' + context.params.postId + '.json')
+      .then(res => {
+        return {
+          loadedPost: res.data
+        }
+      })
+      .catch(e => context.error(e))
   }
 }
 </script>
@@ -36,4 +34,3 @@ export default {
   padding: 30px;
 }
 </style>
-
