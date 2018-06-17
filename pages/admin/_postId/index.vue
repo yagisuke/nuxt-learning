@@ -16,21 +16,26 @@ export default {
   },
   layout: 'admin',
   asyncData(context) {
-    return axios.get(`https://nuxt-learning-blog.firebaseio.com/posts/${context.params.postId}.json`)
+    const postId = context.params.postId
+
+    return axios.get(`https://nuxt-learning-blog.firebaseio.com/posts/${postId}.json`)
       .then(res => {
         return {
-          loadedPost: res.data
+          loadedPost: {
+            ...res.data,
+            id: postId
+          }
         }
       })
       .catch(e => context.error(e))
   },
   methods: {
     onSubmitted(editedPost) {
-      axios.put(`https://nuxt-learning-blog.firebaseio.com/posts/${this.$route.params.postId}.json`, editedPost)
-        .then(res => {
-          this.$router.push('/admin')
-        })
-        .catch(e => console.log(e))
+      console.dir(editedPost)
+      this.$store.dispatch('editPost', editedPost)
+      .then(() => {
+        this.$router.push('/admin')
+      })
     }
   }
 }
