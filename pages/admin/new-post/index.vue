@@ -17,7 +17,7 @@ export default {
   layout: 'admin',
   methods: {
     onSubmitted(postData) {
-      axios.post('https://nuxt-learning.firebaseio.com/posts.json', {
+      axios.post('https://nuxt-learning-blog.firebaseio.com/posts.json', {
         ...postData,
         updatedDate: new Date()
       })
