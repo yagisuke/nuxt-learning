@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import AdminPostForm from '@/components/Admin/AdminPostForm'
 
 export default {
@@ -18,11 +17,11 @@ export default {
   asyncData(context) {
     const postId = context.params.postId
 
-    return axios.get(`${process.env.API_URL}/posts/${postId}.json`)
-      .then(res => {
+    return context.app.$axios.$get(`/posts/${postId}.json`)
+      .then(data => {
         return {
           loadedPost: {
-            ...res.data,
+            ...data,
             id: postId
           }
         }
@@ -31,7 +30,6 @@ export default {
   },
   methods: {
     onSubmitted(editedPost) {
-      console.dir(editedPost)
       this.$store.dispatch('editPost', editedPost)
       .then(() => {
         this.$router.push('/admin')
