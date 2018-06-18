@@ -46,7 +46,12 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/axios'
   ],
+  axios: {
+    baseURL: process.env.BASE_URL || 'https://nuxt-learning-blog.firebaseio.com',
+    credentials: false
+  },
 
   /*
   ** Build configuration
@@ -68,7 +73,7 @@ module.exports = {
     }
   },
   env: {
-    API_URL: 'https://nuxt-learning-blog.firebaseio.com'
+    baseURL: process.env.BASE_URL || 'https://nuxt-learning-blog.firebaseio.com'
   },
   transition: {
     name: 'fade',
