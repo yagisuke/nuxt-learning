@@ -4,7 +4,8 @@ import axios from 'axios'
 const createStore = () => {
   return new Vuex.Store({
     state: {
-      loadedPosts: []
+      loadedPosts: [],
+      token: null
     },
     mutations: {
       setPosts(state, posts) {
@@ -18,6 +19,9 @@ const createStore = () => {
           post => post.id === editedPost.id
         )
         state.loadedPosts[postIndex] = editedPost
+      },
+      setToken(state, token) {
+        state.token = token
       }
     },
     actions: {
@@ -37,7 +41,7 @@ const createStore = () => {
           ...post,
           updatedDate: new Date()
         }
-        return this.$axios.$post(`/posts.json`, createdPost)
+        return this.$axios.$post(`/posts.json?auth=${vuexContext.state.token}`, createdPost)
           .then(data => {
             vuexContext.commit('addPost', {
               ...createdPost,
@@ -57,7 +61,7 @@ const createStore = () => {
           }
         }
 
-        return this.$axios.$put(`/posts/${post.id}.json`, editedPost)
+        return this.$axios.$put(`/posts/${post.id}.json?auth=${vuexContext.state.token}`, editedPost)
         .then(() => {
           vuexContext.commit('editPost', post)
         })
@@ -65,6 +69,21 @@ const createStore = () => {
       },
       setPosts(vuexContext, posts) {
         vuexContext.commit('setPosts', posts)
+      },
+      authenticateUser(vuexContext, { isLogin, email, password }) {
+        const SIGNIN_URL = `https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=${process.env.fbAPIKey}`
+        const SIGNUP_URL = `https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=${process.env.fbAPIKey}`
+        const authUrl = isLogin ? SIGNIN_URL : SIGNUP_URL
+
+        return this.$axios.$post(authUrl, {
+            email: email,
+            password: password,
+            returnSecureToken: true
+          })
+          .then(result => {
+            vuexContext.commit('setToken', result.idToken)
+          })
+          .catch(e => console.log(e))
       }
     },
     getters: {
