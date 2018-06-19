@@ -28,18 +28,14 @@ export default {
   },
   methods: {
     onSubmit() {
-      if (!this.isLogin) {
-        const SIGNUP_URL = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key='
-        this.$axios.$post(SIGNUP_URL + process.env.fbAPIKey, {
-          email: this.email,
-          password: this.password,
-          returnSecureToken: true
-        })
-        .then(result => {
-          console.log(result)
-        })
-        .catch(e => console.log(e))
-      }
+      this.$store.dispatch('authenticateUser', {
+        isLogin: this.isLogin,
+        email: this.email,
+        password: this.password
+      })
+      .then(() => {
+        this.$router.push('/admin')
+      })
     }
   }
 }
