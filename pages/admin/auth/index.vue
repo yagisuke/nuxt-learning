@@ -28,9 +28,11 @@ export default {
   },
   methods: {
     onSubmit() {
-      if (!this.isLogin) {
-        const SIGNUP_URL = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key='
-        this.$axios.$post(SIGNUP_URL + process.env.fbAPIKey, {
+      const SIGNIN_URL = `https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=${process.env.fbAPIKey}`
+      const SIGNUP_URL = `https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=${process.env.fbAPIKey}`
+      const authUrl = this.isLogin ? SIGNIN_URL : SIGNUP_URL
+
+      this.$axios.$post(authUrl, {
           email: this.email,
           password: this.password,
           returnSecureToken: true
@@ -39,7 +41,6 @@ export default {
           console.log(result)
         })
         .catch(e => console.log(e))
-      }
     }
   }
 }
