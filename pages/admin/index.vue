@@ -17,6 +17,7 @@
 <script>
 export default {
   layout: 'admin',
+  middleware: ['auth'],
   computed: {
     loadedPosts: function() {
       return this.$store.getters.loadedPosts

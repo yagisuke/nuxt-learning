@@ -14,6 +14,7 @@ export default {
     AdminPostForm
   },
   layout: 'admin',
+  middleware: ['auth'],
   asyncData(context) {
     const postId = context.params.postId
 
