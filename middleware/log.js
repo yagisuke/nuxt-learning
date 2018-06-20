@@ -1,3 +1,3 @@
 export default function (context) {
-  console.log(`[Middleware]: ${context.route.path}`)
+  console.log(`[Middleware]: log: ${context.route.path}`)
 }
