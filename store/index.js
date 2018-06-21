@@ -102,11 +102,12 @@ const createStore = () => {
         const token = localStorage.getItem('token')
         const expirationDate = localStorage.getItem('tokenExpiration')
 
-        if (!token || new Date() > expirationDate) {
+        if (!token || new Date().getTime() > +expirationDate) {
           return
         }
 
         vuexContext.commit('setToken', token)
+        vuexContext.dispatch('setLogoutTimer', +expirationDate - new Date().getTime())
       }
     },
     getters: {
