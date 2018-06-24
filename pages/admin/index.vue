@@ -1,11 +1,8 @@
 <template>
   <div class="admin-page">
     <section class="new-post">
-      <AppButton
-        @click="$router.push('/admin/new-post')"
-      >
-        Create Post
-      </AppButton>
+      <AppButton @click="$router.push('/admin/new-post')">Create Post</AppButton>
+      <AppButton @click="onLogout" style="margin-left: 10px">Logout</AppButton>
     </section>
     <section class="existing-posts">
       <h1>Existing Posts</h1>
@@ -21,6 +18,12 @@ export default {
   computed: {
     loadedPosts: function() {
       return this.$store.getters.loadedPosts
+    }
+  },
+  methods: {
+    onLogout: function() {
+      this.$store.dispatch('logout')
+      this.$router.push('/admin/auth')
     }
   }
 }
