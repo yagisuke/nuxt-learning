@@ -94,8 +94,10 @@ const createStore = () => {
             vuexContext.commit('setToken', idToken)
             localStorage.setItem('token', idToken)
             localStorage.setItem('tokenExpiration', expirationDate)
-            Cookie.set('jwt', token)
+            Cookie.set('jwt', idToken)
             Cookie.set('expirationDate', expirationDate)
+
+            return this.$axios.$post('http://localhost:3000/api/track-data', { data: 'Authenticated!' })
           })
           .catch(e => console.log(e))
       },
@@ -104,19 +106,18 @@ const createStore = () => {
         let expirationDate
 
         if (req) {
-          if (!req.headers.cookie) {
-            return
-          }
+          if (!req.headers.cookie) return
+
           const jwtCookie = req.headers.cookie
             .split(';')
             .find(c => c.trim().startsWith('jwt='))
-          if (!jwtCookie) {
-            return
-          }
+
+          if (!jwtCookie) return
+
           token = jwtCookie.split('=')[1]
           expirationDate = req.headers.cookie
             .split(';')
-            .finde(c => c.trim().startsWith("expirationDate="))
+            .find(c => c.trim().startsWith("expirationDate="))
             .split('=')[1]
         } else {
           token = localStorage.getItem('token')
@@ -134,6 +135,7 @@ const createStore = () => {
         vuexContext.commit('clearToken')
         Cookie.remove('jwt')
         Cookie.remove('expirationDate')
+
         if (process.client) {
           localStorage.removeItem('token')
           localStorage.removeItem('tokenExpiration')
